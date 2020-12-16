@@ -13,15 +13,38 @@
             </div>
             <div class="card-footer">
                 <small class="text-muted">
-                    <button @onclick="(e => SelectedProduct(product.ID))" data-toggle="modal" data-target="#productModel" class="btn btn-primary">More Info</button>
+                    <button @onclick="(e => SelectedProduct(product.ID))" type="button" class="btn btn-primary" data-toggle="modal" data-target="#productModal">More Info</button>
                 </small>
             </div>
         </div>
     }
 </div>
 
-@if(selectedProduct !=null)
+@if (selectedProduct != null)
 {
+    <div class="modal fade" id="productModal" tabindex="-1" role="dialog" aria-labelledby="productTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="productTitle">@selectedProduct.Title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="card">
+                        <div class="card-img" style="background-image: url('@selectedProduct.Image');">
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">@selectedProduct.Description</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
 
 }
 
